@@ -1,0 +1,28 @@
+{
+  "name": "gulp-setup",
+  "version": "1.0.0",
+  "description": "gulp starter files",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.12.8",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.1"
+  },
+  "scripts": {
+    "test": "hey there"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liamcreative/gulp-setup.git"
+  },
+  "keywords": [
+    "gulp"
+  ],
+  "author": "Liam Smith",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/liamcreative/gulp-setup/issues"
+  },
+  "homepage": "https://github.com/liamcreative/gulp-setup#readme"
+}
