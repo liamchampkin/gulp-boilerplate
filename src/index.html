@@ -1,18 +1,14 @@
+{% extends "_layouts/default.html" %}
 {% set title = "Twig.js templating test" %}
 {% set pageTitle = "twig is working!" %}
-{% set benefits = ["Fast!", "Easy as cucumbers!", "Efficient!"] %}
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-</head>
-<body>
-    <h3>{{ pageTitle }}</h3>
+{% set benefits = ["Faster than paul!", "Easy as cucumbers!", "Efficient!"] %}
 
-    <ul>
-        {% for value in benefits %}
-            <li>{{ value }}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% block content %}
+<h3>{{ pageTitle }}</h3>
+
+<ul>
+  {% for value in benefits %}
+      <li>{{ value }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

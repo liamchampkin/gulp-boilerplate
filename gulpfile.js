@@ -6,7 +6,7 @@ var twig = require('gulp-twig');
 gulp.task('sass', function() {
   return gulp.src('scss/styles.scss') // Gets all files ending with .scss in app/scss
     .pipe(sass())
-    .pipe(gulp.dest('css'))
+    .pipe(gulp.dest('site/css'))
     .pipe(browserSync.reload({
       stream: true
     }))
@@ -29,7 +29,7 @@ gulp.task('templates', function() {
 
 gulp.task('watch', ['browserSync', 'sass', 'templates'], function(){
   gulp.watch('scss/**/*.scss', ['sass']); 
-  gulp.watch('src/*.html', ['templates']); 
+  gulp.watch('src/**/*.html', ['templates']); 
   // Reloads the browser whenever HTML or JS files change
   gulp.watch('site/*.html', browserSync.reload); 
   gulp.watch('js/**/*.js', browserSync.reload); 
