@@ -1,16 +1,23 @@
 var gulp = require("gulp");
 var sass = require("gulp-sass");
+var sourcemaps = require("gulp-sourcemaps");
 var autoprefixer = require("gulp-autoprefixer");
 var browserSync = require("browser-sync").create();
 var twig = require("gulp-twig");
 var uglify = require("gulp-uglify");
 var concat = require("gulp-concat");
 var image = require("gulp-image");
+var data = require("gulp-data");
+var order = require("gulp-order");
+var print = require("gulp-print");
+var path = require("path");
 
 gulp.task("sass", function() {
   return gulp
     .src("scss/styles.scss") // Gets all files ending with .scss in app/scss
-    .pipe(sass())
+    .pipe(sourcemaps.init())
+    .pipe(sass().on("error", sass.logError))
+    .pipe(sourcemaps.write())
     .pipe(
       autoprefixer({
         browsers: ["last 2 versions"],
@@ -27,7 +34,17 @@ gulp.task("sass", function() {
 
 gulp.task("js", function() {
   gulp
-    .src("js/*.js")
+    .src("js/*/*.js")
+    .pipe(
+      order(
+        [
+          //list all js files here to be compiled into one file
+          "js/includes/jquery.min.js"
+        ],
+        { base: "./" }
+      )
+    )
+    .pipe(print())
     .pipe(uglify())
     .pipe(concat("js/scripts.js"))
     .pipe(gulp.dest("site"));
@@ -70,8 +87,15 @@ gulp.task("templates", function() {
 
 // add fonts to site directory
 gulp.task("fonts", function() {
-  return gulp.src("fonts/*").pipe(gulp.dest("site/fonts"));
+  return gulp.src("src/fonts/*").pipe(gulp.dest("site/fonts"));
 });
+
+// add data to site directory
+gulp.task("data", function() {
+  return gulp.src("src/data/*").pipe(gulp.dest("site/data"));
+});
+
+gulp.task("print", function() {});
 
 gulp.task(
   "watch",
@@ -80,16 +104,20 @@ gulp.task(
     "sass",
     "templates",
     "js",
+    "print",
     "image",
+    "data",
     "fonts"
   ],
   function() {
     gulp.watch("scss/**/*.scss", ["sass"]);
     gulp.watch("src/**/*.html", ["templates"]);
     gulp.watch("js/**/*.js", ["js"]);
+    gulp.watch("src/data/*.json", ["data"]);
     // Reloads the browser whenever HTML or JS files change
     gulp.watch("site/*.html", browserSync.reload);
     gulp.watch("site/js/**/*.js", browserSync.reload);
+    gulp.watch("site/data/*.json", browserSync.reload);
     // Other watchers
   }
 );
