@@ -11,6 +11,7 @@ var data = require("gulp-data");
 var order = require("gulp-order");
 var print = require("gulp-print");
 var path = require("path");
+var svgSprite = require("gulp-svg-sprites");
 
 gulp.task("sass", function() {
   return gulp
@@ -95,25 +96,34 @@ gulp.task("data", function() {
   return gulp.src("src/data/*").pipe(gulp.dest("site/data"));
 });
 
+gulp.task("sprites", function() {
+  return gulp
+    .src("images/icons/*.svg")
+    .pipe(
+      svgSprite({
+        mode: "symbols",
+        svgId: "svg-%f",
+        selector: "icon-%f",
+        baseSize: 8,
+        cssFile: "scss/_sprite.scss",
+        templates: { scss: true }
+      })
+    )
+    .pipe(gulp.dest("src"));
+});
+
 gulp.task("print", function() {});
 
 gulp.task(
   "watch",
-  [
-    "browserSync",
-    "sass",
-    "templates",
-    "js",
-    "print",
-    "image",
-    "data",
-    "fonts"
-  ],
+  ["browserSync", "sass", "templates", "js", "print", "image", "data", "fonts"],
   function() {
     gulp.watch("scss/**/*.scss", ["sass"]);
     gulp.watch("src/**/*.html", ["templates"]);
     gulp.watch("js/**/*.js", ["js"]);
     gulp.watch("src/data/*.json", ["data"]);
+    gulp.watch("images/**/*.svg", ["image"]);
+    gulp.watch("src/svg/symbols.svg", ["symbols"]);
     // Reloads the browser whenever HTML or JS files change
     gulp.watch("site/*.html", browserSync.reload);
     gulp.watch("site/js/**/*.js", browserSync.reload);
