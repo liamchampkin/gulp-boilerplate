@@ -1,7 +1,7 @@
 {% extends "_layouts/default.html" %}
 {% set title = "Gulp Boilerplate" %}
 {% set pageTitle = "Gulp Boilerplate!" %}
-{% set benefits = ["Twig templating", "SCSS", "Browsersync", "Hot reload"] %}
+{% set benefits = ["Twig templating", "SCSS", "Browsersync", "Hot reload", "Autoprefixer"] %}
 
 {% block content %}
 <div class="wrapper">
@@ -13,6 +13,7 @@
         <li>{{ value }}</li>
     {% endfor %}
   </ul>
+    <button id="clickMeButton">Test JS</button>
 </div>
-  <button id="clickMeButton">Test JS</button>
+
 {% endblock %}
