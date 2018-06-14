@@ -1,16 +1,18 @@
 {% extends "_layouts/default.html" %}
-{% set title = "Twig.js templating test" %}
-{% set pageTitle = "twig is working!" %}
-{% set benefits = ["Faster than paul!", "Easy as cucumbers!", "Efficient!"] %}
+{% set title = "Gulp Boilerplate" %}
+{% set pageTitle = "Gulp Boilerplate!" %}
+{% set benefits = ["Twig templating", "SCSS", "Browsersync", "Hot reload"] %}
 
 {% block content %}
-<h3>{{ pageTitle }}</h3>
+<div class="wrapper">
 
-<button id="clickMeButton">Click me</button>
+  <h3>{{ pageTitle }}</h3>
 
-<ul>
-  {% for value in benefits %}
-      <li>{{ value }}</li>
-  {% endfor %}
-</ul>
+  <ul>
+    {% for value in benefits %}
+        <li>{{ value }}</li>
+    {% endfor %}
+  </ul>
+</div>
+  <button id="clickMeButton">Test JS</button>
 {% endblock %}

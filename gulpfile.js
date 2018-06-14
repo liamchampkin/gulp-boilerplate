@@ -39,7 +39,7 @@ gulp.task("js", function() {
       order(
         [
           //list all js files here to be compiled into one file
-          "js/includes/jquery.min.js"
+          "js/includes/myscripts.js"
         ],
         { base: "./" }
       )

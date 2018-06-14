@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "gulp starter files",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "node-sass": "^4.9.0"
+  },
   "devDependencies": {
     "bower": "^1.8.0",
     "browser-sync": "^2.12.8",
@@ -28,7 +30,9 @@
     "type": "git",
     "url": "git+https://github.com/liamcreative/gulp-boilerplate.git"
   },
-  "keywords": ["gulp"],
+  "keywords": [
+    "gulp"
+  ],
   "author": "Liam Smith",
   "license": "UNLICENSED",
   "bugs": {
