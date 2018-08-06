@@ -1,6 +1,6 @@
 # gulp-setup
 
-Starter files for gulp.
+A quick protoyping Gulp set up which includes SCSS, browsersync, Twig templates, hot reload and autoprefixer.
 
 To install pull down directory and run
 
