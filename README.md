@@ -1,10 +1,5 @@
 # gulp-setup
 
-install
--brew
--node
--gulp
-
 Starter files for gulp.
 
 To install pull down directory and run
